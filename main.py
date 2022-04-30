@@ -5,7 +5,7 @@ from PIL import Image, ImageDraw, ImageFont
 
 logging.basicConfig(level=logging.INFO)
 
-bot = Bot(token='TOKEN')
+bot = Bot(token='5053187040:AAHMorEJ33__FZblZzd63G3KcGHNSHAB-cY')
 dp = Dispatcher(bot)
 
 @dp.message_handler(content_types=["photo"])
@@ -27,30 +27,20 @@ async def photo(message: types.Message):
     if ttf == "neon":
        font = ImageFont.truetype('font/neon.ttf', int(size_image))
        textwidth, textheight = draw.textsize(text, font)
-
-       margin = 10
-       x = width - textwidth - margin
-       y = height - textheight - margin
-       draw.text((x, y), text, font=font)
-       im.show()
-       im.save('image/watermark.png')
-
-       get_photo = open('image/watermark.png', 'rb')
-       await message.bot.send_photo(chat_id=message.chat.id, photo=get_photo, caption=f'🚀 Держи!')
-    
+  
     if ttf == "minecraft":
        font = ImageFont.truetype('font/minecraft.ttf', int(size_image))
        textwidth, textheight = draw.textsize(text, font)
+    
+    margin = 10
+    x = width - textwidth - margin
+    y = height - textheight - margin
+    draw.text((x, y), text, font=font)
+    im.show()
+    im.save('image/watermark.png')
 
-       margin = 10
-       x = width - textwidth - margin
-       y = height - textheight - margin
-       draw.text((x, y), text, font=font)
-       im.show()
-       im.save('image/watermark.png')
-
-       get_photo = open('image/watermark.png', 'rb')
-       await message.bot.send_photo(chat_id=message.chat.id, photo=get_photo, caption=f'🚀 Держи!')
-
+    get_photo = open('image/watermark.png', 'rb')
+    await message.bot.send_photo(chat_id=message.chat.id, photo=get_photo, caption=f'🚀 Держи!')
+    
 if __name__ == "__main__":
     executor.start_polling(dp, skip_updates=True)
