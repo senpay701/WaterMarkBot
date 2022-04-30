@@ -11,9 +11,7 @@ dp = Dispatcher(bot)
 @dp.message_handler(content_types=["photo"])
 async def add_image(message: types.Message):
     await message.photo[-1].download('image/image.png')
-    await asyncio.sleep(1)
     await message.reply(f"<b>🚀 Изображение успешно загружено!</b>", parse_mode='html')
-    await asyncio.sleep(1)
     await message.reply(f"<b>📸 Введите данную команду для создания водяной метки:</b> <code>/text [font] [size] [text]</code>!\n<b>✏️ Шрифты доступные в боте:</b>\n1️⃣ <code>minecraft</code>\n2️⃣ <code>neon</code>", parse_mode='html')
 
 @dp.message_handler(commands=['text'])
@@ -41,6 +39,6 @@ async def photo(message: types.Message):
 
     get_photo = open('image/watermark.png', 'rb')
     await message.bot.send_photo(chat_id=message.chat.id, photo=get_photo, caption=f'🚀 Держи!')
-    
+
 if __name__ == "__main__":
     executor.start_polling(dp, skip_updates=True)
