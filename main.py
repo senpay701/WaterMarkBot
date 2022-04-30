@@ -24,12 +24,11 @@ async def photo(message: types.Message):
     text = message.text.split()[3]
     if ttf == "neon":
        font = ImageFont.truetype('font/neon.ttf', int(size_image))
-       textwidth, textheight = draw.textsize(text, font)
   
     if ttf == "minecraft":
        font = ImageFont.truetype('font/minecraft.ttf', int(size_image))
-       textwidth, textheight = draw.textsize(text, font)
     
+    textwidth, textheight = draw.textsize(text, font)
     margin = 10
     x = width - textwidth - margin
     y = height - textheight - margin
