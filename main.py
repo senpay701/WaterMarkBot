@@ -7,7 +7,7 @@ from PIL import Image, ImageDraw, ImageFont
 
 logging.basicConfig(level=logging.INFO)
 
-bot = Bot(token='5053187040:AAHMorEJ33__FZblZzd63G3KcGHNSHAB-cY')
+bot = Bot(token='TOKEN')
 dp = Dispatcher(bot)
 
 @dp.message_handler(commands=['start'])
